@@ -33,7 +33,6 @@
 
 ([
   "and"
-  "contains"
   "in"
   "or"
 ] @keyword.operator
