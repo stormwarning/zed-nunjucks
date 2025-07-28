@@ -1,0 +1,10 @@
+name = "Nunjucks"
+grammar = "nunjucks"
+path_suffixes = ["njk"]
+brackets = [
+	{ start = "{{", end = "}}", close = true, newline = false },
+	{ start = "{{-", end = "-}}", close = true, newline = false },
+	{ start = "{%", end = "%}", close = true, newline = false },
+	{ start = "{%-", end = "-%}", close = true, newline = false },
+]
+block_comment = ["{% comment %}", "{% endcomment %}"]
