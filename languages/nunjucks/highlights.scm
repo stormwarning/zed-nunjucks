@@ -1,39 +1,64 @@
-([
-  "{{"
-  "}}"
-  "{{-"
-  "-}}"
-  "{%"
-  "%}"
-  "{%-"
-  "-%}"
+[
+	"{{"
+	"}}"
+	"{{-"
+	"-}}"
+	"{%"
+	"%}"
+	"{%-"
+	"-%}"
 ] @tag.delimiter
-  (#set! priority 110))
 
-([
-  "asyncAll"
-  "asyncEach"
-  "endall"
-  "endeach"
-  "endfor"
-  "endmacro"
-  "for"
-  "macro"
+[
+	"asyncAll"
+	"asyncEach"
+	"endall"
+	"endeach"
+	"endfor"
+	"endmacro"
+	"for"
+	"macro"
+	"set"
 ] @keyword
-  (#set! priority 110))
 
-([
-  "else"
-  "elif"
-  "elseif"
-  "endif"
-  "if"
+[
+	"include"
+	; "import"
+	; "from"
+	; "extends"
+	; "as"
+] @keyword.import
+
+[
+	"else"
+	"elif"
+	"elseif"
+	"endif"
+	"if"
 ] @keyword.conditional
-  (#set! priority 110))
 
-([
-  "and"
-  "in"
-  "or"
+[
+	"and"
+	"in"
+	"or"
 ] @keyword.operator
-  (#set! priority 110))
+
+(comment_tag) @comment @spell
+
+(string_literal) @string
+
+(number_literal) @number
+
+(float_literal) @number.float
+
+(boolean_literal) @boolean
+
+(null_literal) @constant
+
+[
+	(attribute_ignore)
+	(attribute_context)
+	; "recursive"
+] @attribute.builtin
+
+(binary_operator) @operator
