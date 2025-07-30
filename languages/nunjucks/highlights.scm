@@ -10,24 +10,28 @@
 ] @tag.delimiter
 
 [
-	"asyncAll"
-	"asyncEach"
-	"endall"
-	"endeach"
-	"endfor"
-	"endmacro"
-	"for"
+	"block"
+	"filter"
 	"macro"
+	"raw"
 	"set"
 ] @keyword
 
+(end_statement) @keyword
+
 [
+	"as"
+	"extends"
+	"from"
+	"import"
 	"include"
-	; "import"
-	; "from"
-	; "extends"
-	; "as"
 ] @keyword.import
+
+(import_statement
+	(identifier) @variable)
+
+(import_as
+	(identifier) @variable)
 
 [
 	"else"
@@ -38,10 +42,34 @@
 ] @keyword.conditional
 
 [
+	"asyncAll"
+	"asyncEach"
+	"endall"
+	"endeach"
+	"endfor"
+	"for"
+	"in"
+] @keyword.repeat
+
+[
 	"and"
 	"in"
 	"or"
 ] @keyword.operator
+
+"call" @function.call
+(function_call
+	(identifier) @function.call)
+
+
+[
+	(attribute_ignore)
+	(attribute_context)
+	; "recursive"
+] @attribute.builtin
+
+(binary_operator) @operator
+
 
 (comment_tag) @comment @spell
 
@@ -56,9 +84,16 @@
 (null_literal) @constant
 
 [
-	(attribute_ignore)
-	(attribute_context)
-	; "recursive"
-] @attribute.builtin
+	"("
+	")"
+	"["
+	"]"
+	"<"
+	">"
+] @punctuation.bracket
 
-(binary_operator) @operator
+[
+	","
+	"."
+	":"
+] @punctuation.delimiter
