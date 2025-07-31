@@ -8,4 +8,4 @@ repository = "https://github.com/stormwarning/zed-nunjucks"
 
 [grammars.nunjucks]
 repository = "https://github.com/stormwarning/tree-sitter-nunjucks"
-commit = "204016e8a328310e459700da2498ca1fb399bcd5"
+commit = "683a6e9b3c836f8e02a90ce6a348395f7f95e331"

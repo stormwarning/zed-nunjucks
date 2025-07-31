@@ -11,6 +11,7 @@
 
 [
 	"block"
+	"call"
 	"filter"
 	"macro"
 	"raw"
@@ -57,19 +58,22 @@
 	"or"
 ] @keyword.operator
 
-"call" @function.call
 (function_call
 	(identifier) @function.call)
-
+(filter_statement
+	(expression
+		(unary_expression
+			(primary_expression
+				(identifier) @function.call))))
+(expression_filter
+	(identifier) @function.call)
 
 [
 	(attribute_ignore)
 	(attribute_context)
-	; "recursive"
 ] @attribute.builtin
 
 (binary_operator) @operator
-
 
 (comment_tag) @comment @spell
 
@@ -97,3 +101,5 @@
 	"."
 	":"
 ] @punctuation.delimiter
+(expression_filter
+	"|" @punctuation.delimiter)
