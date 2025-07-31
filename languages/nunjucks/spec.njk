@@ -1,0 +1,83 @@
+<html lang="en">
+	{{ }}
+	{{ foo }}
+	{{ foo[42].bar }}
+
+	{{ 4 + 8 }}
+	{{ foo*2 }}
+
+	{{ numUsers > 5 }}
+	{{ i === 0 }}
+
+	{{ users and showUsers }}
+	{{ i === 0 and not hideFirst }}
+	{{ (x < 5 or y < 5) and foo }}
+
+	{{ foo if foo else "false" }}
+	{{ baz(foo if foo else "default") }}
+	{{ "true" if foo }}
+
+	{{ foo(1, 2, 3) }}
+	{{ foo(1, 2, bar=3, baz=4) }}
+
+	{% if hungry %}
+	{% elif tired %}
+	{% else %}
+	{% endif %}
+
+	{% for item in object.items %}
+	{% for ingredient, amount in food %}
+	{% endfor %}
+
+	{% asyncEach item in items %}
+	{% endeach %}
+	{% asyncAll item in items %}
+	{% endall %}
+
+	{% macro field(name, value='', type='text') %}
+	{% endmacro %}
+
+	{% set username = "joe" %}
+	{% set x, y, z = 5 %}
+	{% set standardModal %}
+		{% include 'standardModalData.html' %}
+	{% endset %}
+
+	{% extends "base.html" %}
+	{% extends parentTemplate %}
+	{% extends name + ".html" %}
+
+	{% block css %}
+	{% endblock %}
+
+	{% include "item.html" %}
+	{% include name + ".html" %}
+	{% include "missing.html" ignore missing %}
+
+	{% import "forms.html" as forms %}
+	{% from "forms.html" import field, label as description %}
+	{% from "forms.html" import field with context %}
+	{% import name + ".html" as obj %}
+
+	{% raw %}
+		{{ user.name }}
+	{% endraw %}
+
+	{% filter title %}
+		may the force be with you
+	{% endfilter %}
+
+	{% filter replace("force", "fourth") %}
+		may the force be with you
+	{% endfilter %}
+
+	{% call add(1, 2) -%}
+		The result is
+	{%- endcall %}
+
+	{# comment #}
+
+	{{ foo | title }}
+	{{ foo | join(",") }}
+	{{ foo | replace("foo", bar) | capitalize }}
+</html>
