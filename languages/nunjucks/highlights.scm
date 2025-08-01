@@ -7,7 +7,7 @@
 	"%}"
 	"{%-"
 	"-%}"
-] @tag.delimiter
+] @punctuation.special
 
 [
 	"block"
@@ -16,9 +16,8 @@
 	"macro"
 	"raw"
 	"set"
+	(end_statement)
 ] @keyword
-
-(end_statement) @keyword
 
 [
 	"as"
@@ -30,7 +29,6 @@
 
 (import_statement
 	(identifier) @variable)
-
 (import_as
 	(identifier) @variable)
 
@@ -78,6 +76,7 @@
 ] @attribute.builtin
 
 (binary_operator) @operator
+(expression_filter "|" @operator)
 
 (comment_tag) @comment @spell
 
@@ -105,5 +104,3 @@
 	"."
 	":"
 ] @punctuation.delimiter
-(expression_filter
-	"|" @punctuation.delimiter)
