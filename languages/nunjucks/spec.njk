@@ -71,6 +71,15 @@
 		may the force be with you
 	{% endfilter %}
 
+	{% switch foo %}
+		{% case "bar" %}
+			This is bar
+		{% case "baz" %}
+			This is baz
+		{% default %}
+			This is the default
+	{% endswitch %}
+
 	{% call add(1, 2) -%}
 		The result is
 	{%- endcall %}

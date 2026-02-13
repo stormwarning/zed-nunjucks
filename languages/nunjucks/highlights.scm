@@ -35,11 +35,15 @@
 	(identifier) @variable)
 
 [
+	"case"
+	"default"
 	"else"
 	"elif"
 	"elseif"
 	"endif"
+	"endswitch"
 	"if"
+	"switch"
 ] @keyword.conditional
 
 [
