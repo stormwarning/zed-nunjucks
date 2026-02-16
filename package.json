@@ -1,6 +1,6 @@
 {
 	"name": "zed-nunjucks",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"private": true,
 	"repository": "stormwarning/zed-nunjucks",
 	"author": "Jeff (https://tidaltheory.io)",
