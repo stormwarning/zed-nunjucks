@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.1.2/schema.json",
+  "access": "restricted",
+  "baseBranch": "main",
+  "changelog": [
+    "@zazen/changesets-changelog",
+    { "repo": "stormwarning/zed-nunjucks" }
+  ],
+  "commit": false,
+  "fixed": [],
+  "ignore": [],
+  "linked": [],
+  "updateInternalDependencies": "patch"
+}
