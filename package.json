@@ -1,0 +1,19 @@
+{
+	"name": "zed-nunjucks",
+	"version": "0.0.1",
+	"private": true,
+	"repository": "stormwarning/zed-nunjucks",
+	"author": "Jeff (https://tidaltheory.io)",
+	"type": "module",
+	"scripts": {
+		"changeset": "changeset add",
+		"release": "changeset tag",
+		"version": "npm run version:ext && changeset version",
+		"version:ext": "replace \"version = \\\"\\d+\\.\\d+\\.\\d+\\\"\" \"version = \\\"$npm_package_version\\\"\" extension.toml"
+	},
+	"devDependencies": {
+		"@changesets/cli": "2.29.8",
+		"@zazen/changesets-changelog": "2.0.3",
+		"replace": "1.2.2"
+	}
+}

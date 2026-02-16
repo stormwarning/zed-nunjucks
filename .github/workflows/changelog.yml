@@ -1,0 +1,37 @@
+on:
+    push:
+        branches:
+            - main
+
+permissions: {}
+
+jobs:
+    changelog:
+        name: Update changelog
+        runs-on: ubuntu-latest
+
+        steps:
+            # https://github.com/actions/checkout
+            - name: Checkout repo
+              uses: actions/checkout@v6
+              with:
+                  fetch-depth: 0
+
+            # https://github.com/actions/setup-node
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+
+            - name: Install dependencies
+              run: npm install
+
+            # https://github.com/changesets/action
+            - name: Bump version & update changelog
+              id: changesets
+              uses: changesets/action@v1
+              with:
+                  commit: Publish release
+                  title: Publish release
+                  version: npm run version
+                  release: npm run release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
