@@ -1,106 +1,250 @@
-[
-	"{{"
-	"}}"
-	"{{-"
-	"-}}"
-	"{%"
-	"%}"
-	"{%-"
-	"-%}"
-] @punctuation.special
+; ---------------------------------------------------------------------------
+; Tag delimiters  →  punctuation.bracket
+; ---------------------------------------------------------------------------
+
+"{{" @punctuation.bracket
+"{{-" @punctuation.bracket
+"{{+" @punctuation.bracket
+"}}" @punctuation.bracket
+"-}}" @punctuation.bracket
+"+}}" @punctuation.bracket
+
+"{%" @punctuation.bracket
+"{%-" @punctuation.bracket
+"{%+" @punctuation.bracket
+"%}" @punctuation.bracket
+"-%}" @punctuation.bracket
+"+%}" @punctuation.bracket
+
+"{#" @punctuation.bracket
+"#}" @punctuation.bracket
+
+; ---------------------------------------------------------------------------
+; Comments
+; ---------------------------------------------------------------------------
+
+(comment_tag) @comment
+
+; ---------------------------------------------------------------------------
+; Keywords
+; ---------------------------------------------------------------------------
 
 [
-	"block"
-	"call"
-	"filter"
-	"macro"
-	"raw"
-	"set"
-	(end_statement)
-] @keyword
-
-[
-	"as"
-	"extends"
-	"from"
-	"import"
-	"include"
-] @keyword.import
-
-(import_statement
-	(identifier) @variable)
-(import_as
-	(identifier) @variable)
-
-[
-	"case"
-	"default"
-	"else"
-	"elif"
-	"elseif"
-	"endif"
-	"endswitch"
-	"if"
-	"switch"
+  "if"
+  "elif"
+  "elseif"
+  "else"
+  "endif"
 ] @keyword.conditional
 
 [
-	"asyncAll"
-	"asyncEach"
-	"endall"
-	"endeach"
-	"endfor"
-	"for"
-	"in"
+  "for"
+  "in"
+  "endfor"
+  "asyncEach"
+  "endeach"
+  "asyncAll"
+  "endall"
 ] @keyword.repeat
 
 [
-	"and"
-	"in"
-	"or"
-] @keyword.operator
-
-(function_call
-	(identifier) @function.call)
-(filter_statement
-	(expression
-		(unary_expression
-			(primary_expression
-				(identifier) @function.call))))
-(expression_filter
-	(identifier) @function.call)
+  "macro"
+  "endmacro"
+  "call"
+  "endcall"
+] @keyword.function
 
 [
-	(attribute_ignore)
-	(attribute_context)
-] @attribute.builtin
+  "set"
+  "endset"
+  "block"
+  "endblock"
+  "extends"
+  "include"
+  "import"
+  "from"
+  "as"
+  "filter"
+  "endfilter"
+  "switch"
+  "endswitch"
+  "case"
+  "raw"
+  "endraw"
+  "verbatim"
+  "endverbatim"
+] @keyword
+
+(default_statement) @keyword
+
+[
+  "ignore"
+  "missing"
+  "with"
+  "without"
+  "context"
+] @keyword.modifier
+
+; ---------------------------------------------------------------------------
+; Operators
+; ---------------------------------------------------------------------------
 
 (binary_operator) @operator
-(expression_filter "|" @operator)
+(unary_operator) @operator
 
-(comment_tag) @comment @spell
+"." @punctuation.delimiter
+":" @punctuation.delimiter
+"|" @operator
 
-(string_literal) @string
+; ---------------------------------------------------------------------------
+; Punctuation
+; ---------------------------------------------------------------------------
 
-(number_literal) @number
+"(" @punctuation.bracket
+")" @punctuation.bracket
+"[" @punctuation.bracket
+"]" @punctuation.bracket
+"{" @punctuation.bracket
+"}" @punctuation.bracket
 
-(float_literal) @number.float
+"," @punctuation.delimiter
+
+; ---------------------------------------------------------------------------
+; Literals
+; ---------------------------------------------------------------------------
 
 (boolean_literal) @boolean
 
-(null_literal) @constant
+(null_literal) @constant.builtin
 
-[
-	"("
-	")"
-	"["
-	"]"
-	"<"
-	">"
-] @punctuation.bracket
+(number_literal) @number
+(float_literal) @number.float
 
-[
-	","
-	"."
-	":"
-] @punctuation.delimiter
+(string_literal) @string
+
+; ---------------------------------------------------------------------------
+; Identifiers
+; ---------------------------------------------------------------------------
+
+(identifier) @variable
+
+; ---------------------------------------------------------------------------
+; Functions
+; ---------------------------------------------------------------------------
+
+(function_call
+  (identifier) @function.call)
+
+; Builtin filters  →  function.builtin
+; Used as plain identifier:  {{ items | lower }}
+(expression_filter
+  (identifier) @function.builtin
+  (#any-of? @function.builtin
+    "abs"
+    "batch"
+    "capitalize"
+    "center"
+    "d"
+    "default"
+    "dictsort"
+    "dump"
+    "e"
+    "escape"
+    "first"
+    "float"
+    "forceescape"
+    "groupby"
+    "indent"
+    "int"
+    "join"
+    "last"
+    "length"
+    "list"
+    "lower"
+    "nl2br"
+    "random"
+    "reject"
+    "rejectattr"
+    "replace"
+    "reverse"
+    "round"
+    "safe"
+    "select"
+    "selectattr"
+    "slice"
+    "sort"
+    "string"
+    "striptags"
+    "sum"
+    "title"
+    "trim"
+    "truncate"
+    "upper"
+    "urlencode"
+    "urlize"
+    "wordcount"))
+
+; Used as a function call:  {{ items | join(",") }}
+(expression_filter
+  (function_call
+    (identifier) @function.builtin)
+  (#any-of? @function.builtin
+    "abs"
+    "batch"
+    "capitalize"
+    "center"
+    "d"
+    "default"
+    "dictsort"
+    "dump"
+    "e"
+    "escape"
+    "first"
+    "float"
+    "forceescape"
+    "groupby"
+    "indent"
+    "int"
+    "join"
+    "last"
+    "length"
+    "list"
+    "lower"
+    "nl2br"
+    "random"
+    "reject"
+    "rejectattr"
+    "replace"
+    "reverse"
+    "round"
+    "safe"
+    "select"
+    "selectattr"
+    "slice"
+    "sort"
+    "string"
+    "striptags"
+    "sum"
+    "title"
+    "trim"
+    "truncate"
+    "upper"
+    "urlencode"
+    "urlize"
+    "wordcount"))
+
+; Remaining filters (user-defined)
+(expression_filter
+  (function_call
+    (identifier) @function.call))
+
+(expression_filter
+  (identifier) @function.call)
+
+(macro_statement
+  (function_call
+    (identifier) @function.definition))
+
+(call_statement
+  (function_call
+    (identifier) @function.call))
