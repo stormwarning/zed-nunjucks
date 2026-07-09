@@ -8,3 +8,16 @@ brackets = [
 	{ start = "{%-", end = "-%}", close = true, newline = false },
 ]
 block_comment = ["{# ", " #}"]
+scope_opt_in_language_servers = [
+	"tailwindcss-language-server",
+	"vscode-html-language-server",
+	"emmet-language-server",
+]
+prettier_parser_name = "jinja-template"
+
+[overrides.element]
+opt_into_language_servers = ["emmet-language-server"]
+
+[overrides.string]
+word_characters = ["-"]
+opt_into_language_servers = ["tailwindcss-language-server"]
