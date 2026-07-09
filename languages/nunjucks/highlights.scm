@@ -34,7 +34,7 @@
 
 [
 	"case"
-	"default"
+	(default_statement)
 	"else"
 	"elif"
 	"elseif"
