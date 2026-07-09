@@ -12,8 +12,8 @@
 		"version:ext": "replace \"version = \\\"\\d+\\.\\d+\\.\\d+\\\"\" \"version = \\\"$npm_package_version\\\"\" extension.toml"
 	},
 	"devDependencies": {
-		"@changesets/cli": "2.29.8",
-		"@zazen/changesets-changelog": "2.0.3",
+		"@changesets/cli": "2.31.0",
+		"@zazen/changesets-changelog": "2.0.4",
 		"replace": "1.2.2"
 	}
 }
