@@ -1,11 +1,11 @@
 id = "nunjucks"
 name = "Nunjucks"
-version = "0.0.1"
+version = "0.0.2"
 schema_version = 1
 authors = ["Jeff Nelson (https://tidaltheory.io)"]
 description = "Nunjucks support"
 repository = "https://github.com/stormwarning/zed-nunjucks"
 
 [grammars.nunjucks]
-repository = "https://github.com/stormwarning/tree-sitter-nunjucks"
-commit = "e0de890e82665d54b923e9b3983db37c5b7fbe38"
+repository = "https://github.com/bobrocke/tree-sitter-nunjucks"
+commit = "9a82aadd1d132cdf923da7661da6f48690780388"
