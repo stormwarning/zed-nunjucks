@@ -1,5 +1,11 @@
 # zed-nunjucks
 
+## 0.0.3
+
+### Patch Changes
+
+- Fix extension not registering language ([#8](https://github.com/stormwarning/zed-nunjucks/pull/8))
+
 ## 0.0.2
 
 ### Patch Changes
