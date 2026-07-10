@@ -41,6 +41,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Check out new version tag
+        if: steps.changesets.outputs.published == 'true'
+        run: |
+          git fetch --tags
+          git checkout v${{ fromJson(steps.changesets.outputs.publishedPackages).0.version }}
+
       # https://github.com/huacnlee/zed-extension-action
       - name: Release Zed extension
         if: steps.changesets.outputs.published == 'true'
@@ -49,6 +55,7 @@ jobs:
           extension-name: nunjucks
           # extension-path: extensions/${{ extension-name }}
           push-to: stormwarning/zed-extensions
+          tag-name: v${{ fromJson(steps.changesets.outputs.publishedPackages).0.version }}
         env:
           # Personal Access Token with `repo` & `workflow` scopes.
           COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
