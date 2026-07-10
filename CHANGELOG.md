@@ -1,5 +1,11 @@
 # zed-nunjucks
 
+## 0.0.5
+
+### Patch Changes
+
+- Version bump to re-trigger release workflow [`3420dd2`](https://github.com/stormwarning/zed-nunjucks/commit/3420dd2b5ad2179f1c1266b047c60f6a194acfa7)
+
 ## 0.0.4
 
 ### Patch Changes
