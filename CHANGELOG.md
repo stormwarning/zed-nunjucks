@@ -1,5 +1,11 @@
 # zed-nunjucks
 
+## 0.0.6
+
+### Patch Changes
+
+- Attempt to automate release workflow [`877d014`](https://github.com/stormwarning/zed-nunjucks/commit/877d014f9eb328f6bc3de56c30b5c09d9422a1b9)
+
 ## 0.0.5
 
 ### Patch Changes
