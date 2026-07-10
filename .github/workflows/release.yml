@@ -55,7 +55,7 @@ jobs:
           extension-name: nunjucks
           # extension-path: extensions/${{ extension-name }}
           push-to: stormwarning/zed-extensions
-          tag-name: v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}
+          tag: v${{ fromJson(steps.changesets.outputs.publishedPackages)[0].version }}
         env:
           # Personal Access Token with `repo` & `workflow` scopes.
           COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
