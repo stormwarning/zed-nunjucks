@@ -1,5 +1,11 @@
 # zed-nunjucks
 
+## 0.0.4
+
+### Patch Changes
+
+- Add license [`0635d40`](https://github.com/stormwarning/zed-nunjucks/commit/0635d40d95b6c34a498ba1590fd4f2e389c31c3b)
+
 ## 0.0.3
 
 ### Patch Changes
