@@ -1,5 +1,11 @@
 # zed-nunjucks
 
+## 0.0.7
+
+### Patch Changes
+
+- Fix release workflow [`e57de31`](https://github.com/stormwarning/zed-nunjucks/commit/e57de31d9ddd7b5a5d97b3614c60d9f8f35a1460)
+
 ## 0.0.6
 
 ### Patch Changes
